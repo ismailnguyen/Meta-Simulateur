@@ -1,2 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FourmiliereConsole.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibAbstraite.Fabriques.FabriqueAbstraite">
+    <Position X="13.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibAbstraite.GestionEnvironnement.AccesAbstrait">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibAbstraite.GestionEnvironnement.EnvironnementAbstrait">
+    <Position X="8.75" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibAbstraite.GestionEnvironnement.ZoneAbstraite">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibAbstraite.GestionPersonnages.PersonnageAbstrait">
+    <Position X="3.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibMetier.Fabriques.FabriqueFourmiliere">
+    <Position X="13.75" Y="3" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibMetier.GestionEnvironnement.BoutDeTerrain">
+    <Position X="6.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibMetier.GestionEnvironnement.Chemin">
+    <Position X="11.5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibMetier.GestionEnvironnement.Fourmiliere">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibMetier.GestionPersonnages.Fourmi">
+    <Position X="3.25" Y="3.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
