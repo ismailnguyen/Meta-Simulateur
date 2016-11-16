@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 14.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Génération de code/Journal de transformation de texte">
+  <MessageClass Name="Message" Label="Message" Option="Afficher les messages d'information" />
+  <MessageClass Name="Warning" Label="Avertissement" Option="Afficher les avertissements" />
+  <MessageClass Name="Error" Label="Erreur" Option="Afficher les erreurs" />
+  <MessageClass Name="Property" Label="Propriété" Option="Afficher les métadonnées" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Afficher les messages de diagnostic" />
+  <Message Timestamp="2016-09-27T17:38:35" Importance="High" Text="Génération du code ou transformation du texte démarrées." />
+  <Error Timestamp="2016-09-27T17:38:35" Importance="High" Text="Les modèles à traiter sont introuvables." />
+  <Message Timestamp="2016-09-27T17:38:35" Importance="Diagnostic" Text="La sélection comprenait 2 éléments qui n'étaient pas liés à un modèle." />
+  <Warning Timestamp="2016-09-27T17:38:35" Importance="Medium" Text="'ModelingProject1::Interface1' -  (Interface) : aucun modèle lié." />
+  <Warning Timestamp="2016-09-27T17:38:35" Importance="Medium" Text="'ModelingProject1::Class1' -  (Class) : aucun modèle lié." />
+  <Message Timestamp="2016-09-27T17:38:35" Importance="High" Text="Génération du code terminée. Erreurs : 1. Avertissements : 2." />
+</Log>
