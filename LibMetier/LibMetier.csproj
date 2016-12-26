@@ -35,10 +35,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Fabriques\FabriqueFoumiliere.cs" />
+    <Compile Include="Fabriques\FabriqueMetro.cs" />
     <Compile Include="GestionEnvironnement\BoutDeTerrain.cs" />
     <Compile Include="GestionEnvironnement\Chemin.cs" />
     <Compile Include="GestionEnvironnement\Fourmiliere.cs" />
+    <Compile Include="GestionEnvironnement\Ligne.cs" />
+    <Compile Include="GestionEnvironnement\Station.cs" />
     <Compile Include="GestionPersonnages\Fourmi.cs" />
+    <Compile Include="GestionPersonnages\Passager.cs" />
+    <Compile Include="GestionPersonnages\Train.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
