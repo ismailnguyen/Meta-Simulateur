@@ -40,6 +40,7 @@
     <Compile Include="GestionEnvironnement\Chemin.cs" />
     <Compile Include="GestionEnvironnement\Fourmiliere.cs" />
     <Compile Include="GestionEnvironnement\Ligne.cs" />
+    <Compile Include="GestionEnvironnement\Metro.cs" />
     <Compile Include="GestionEnvironnement\Station.cs" />
     <Compile Include="GestionPersonnages\Fourmi.cs" />
     <Compile Include="GestionPersonnages\Passager.cs" />
