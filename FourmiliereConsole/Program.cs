@@ -25,8 +25,10 @@ namespace FourmiliereConsole
                   }*/
 
             Console.WriteLine("----- Metro -----");
+
             FabriqueAbstraite depotMetro = new FabriqueMetro();
             EnvironnementAbstrait Metro = depotMetro.CreerEnvironment();
+
             Metro.ChargerEnvironnement(depotMetro);
             Metro.ChargerPersonnages(depotMetro);
 

@@ -2,6 +2,7 @@
 using System.Text;
 using LibAbstraite.Fabriques;
 using LibAbstraite.GestionPersonnages;
+using System.Xml;
 
 namespace LibAbstraite.GestionEnvironnement
 {
@@ -10,18 +11,27 @@ namespace LibAbstraite.GestionEnvironnement
         public List<PersonnageAbstrait> PersonnagesList { get; set; }
         public List<ZoneAbstraite> ZoneAbstraitsList { get; set; }
         public List<AccesAbstrait> AccesAbstraitsList { get; set; }
+
+        public List<PersonnageAbstrait> TrainsList { get; set; }
+        public List<ZoneAbstraite>  StationsList { get; set; }
+        public List<AccesAbstrait>  RailsList { get; set; }
+
         protected EnvironnementAbstrait()
         {
             PersonnagesList = new List<PersonnageAbstrait>();
             ZoneAbstraitsList = new List<ZoneAbstraite>();
             AccesAbstraitsList = new List<AccesAbstrait>();
+
+            TrainsList = new List<PersonnageAbstrait>();
+            StationsList = new List<ZoneAbstraite>();
+            RailsList = new List<AccesAbstrait>();
         }
 
        
 
         //----------------------------------------------------------------------
         public void ChargerEnvironnement(FabriqueAbstraite fabrique)
-        {
+        { 
             ZoneAbstraite b1 = fabrique.CreerZone("b1-Depart");
             ZoneAbstraite b2 = fabrique.CreerZone("b2");
             ZoneAbstraite b3 = fabrique.CreerZone("b3");
@@ -38,11 +48,40 @@ namespace LibAbstraite.GestionEnvironnement
             AjouteChemins(fabrique, ch1, ch2, ch3, ch4, ch5, ch6);
         }
 
+        public void ChargerLigne(FabriqueAbstraite fabrique)
+        {
+            //LIRE XML CREER STATIONS
+            /*
+            xml doc ...
+            foreach(station in stationlist)
+            {
+             ZoneAbstraite nomstation = fabrique.CreerZone("nomstation");  
+             AjouteZoneAbstraits(nomstation);
+            }
+            stationlist.orderby(id)
+            foreach(station in stationlist)
+            {
+             AccesAbstrait ch1 = fabrique.CreerAcces(sation1, station2);
+             AjouteChemins(fabrique, ch1);
+            }
+            */
+
+        }
+
         public virtual void AjoutePersonnage(PersonnageAbstrait unPersonnage)
         {
             PersonnagesList.Add(unPersonnage);
             ZoneAbstraitsList[0].AjoutePersonnage(unPersonnage);
             unPersonnage.Position = ZoneAbstraitsList[0];
+        }
+
+        public virtual void AjouteTrain(PersonnageAbstrait unTrain)
+        {
+            TrainsList.Add(unTrain);
+            //lecture xml
+            // int position = xml.pos;
+            StationsList[0].AjoutePersonnage(unTrain);
+            unTrain.Position = ZoneAbstraitsList[0];
         }
 
         public void ChargerPersonnages(FabriqueAbstraite fabrique)
@@ -51,6 +90,16 @@ namespace LibAbstraite.GestionEnvironnement
             AjoutePersonnage(fabrique.CreerPersonnage("beatrice"));
         }
 
+        public void ChargerTrains(FabriqueAbstraite fabrique)
+        {
+            //LIRE XML AJOUTER DYNAMIQUEMENT LES TRAINS
+            /*
+            foreach(train in TrainList)
+            {
+             AjoutePersonnage(fabrique.CreerPersonnage(train.name));
+            }
+            */
+        }
         //----------------------------------------------------------------------
         private void AjouteZoneAbstraits(params ZoneAbstraite[] zoneAbstraitsArray)
         {
@@ -93,6 +142,16 @@ namespace LibAbstraite.GestionEnvironnement
             return sb.ToString();
         }
 
+        public string SimulerMetro()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(PersonnageAbstrait unTrain in TrainsList)
+            {
+                ZoneAbstraite source = unTrain.Position;
+            }
+            return "coucou";
+        }
+
         private void DeplacerPersonnage(PersonnageAbstrait unPersonnage, ZoneAbstraite zoneAbstraiteCible,
             ZoneAbstraite zoneAbstraiteSource)
         {
@@ -100,6 +159,7 @@ namespace LibAbstraite.GestionEnvironnement
             zoneAbstraiteSource.RetirePersonnage(unPersonnage);
             zoneAbstraiteCible.AjoutePersonnage(unPersonnage);
         }
+
 
         public string Statistiques()
         {
