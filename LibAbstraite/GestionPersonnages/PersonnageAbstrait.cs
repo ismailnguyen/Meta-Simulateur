@@ -12,6 +12,7 @@ namespace LibAbstraite.GestionPersonnages
         public int nbPassager { get; set; }
 
         public ZoneAbstraite Position { get; set; }
+        
 
         protected PersonnageAbstrait()
         {

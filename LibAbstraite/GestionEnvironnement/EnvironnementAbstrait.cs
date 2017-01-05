@@ -2,7 +2,9 @@
 using System.Text;
 using LibAbstraite.Fabriques;
 using LibAbstraite.GestionPersonnages;
-using System.Xml;
+using System.Linq;
+using System.Xml.Linq;
+using System;
 
 namespace LibAbstraite.GestionEnvironnement
 {
@@ -15,6 +17,9 @@ namespace LibAbstraite.GestionEnvironnement
         public List<PersonnageAbstrait> TrainsList { get; set; }
         public List<ZoneAbstraite>  StationsList { get; set; }
         public List<AccesAbstrait>  RailsList { get; set; }
+
+        private XDocument scenario;
+        
 
         protected EnvironnementAbstrait()
         {
@@ -47,65 +52,86 @@ namespace LibAbstraite.GestionEnvironnement
             AccesAbstrait ch6 = fabrique.CreerAcces(b2, b4);
             AjouteChemins(fabrique, ch1, ch2, ch3, ch4, ch5, ch6);
         }
-
+        //-------------------------------------------------------------------------------
         public void ChargerLigne(FabriqueAbstraite fabrique)
         {
-            //LIRE XML CREER STATIONS
-            /*
-            xml doc ...
-            foreach(station in stationlist)
+            scenario = XDocument.Load("scenarioMetro.xml");
+            foreach (XElement node in scenario.Descendants("lignes").Nodes())
             {
-             ZoneAbstraite nomstation = fabrique.CreerZone("nomstation");  
-             AjouteZoneAbstraits(nomstation);
+                if(node.Element("ligne") != null)
+                {
+                    if(node.Element("stations") != null)
+                    {
+                        foreach (XElement st in scenario.Descendants("stations").Nodes())
+                        {
+                            ZoneAbstraite station = fabrique.CreerZone(st.Element("station").Attribute("name").Value);
+                            station.id = Int32.Parse(st.Element("station").Attribute("name").Value);
+                            AjouteStationAbstraits(station);
+                        }
+                    }
+                }
             }
-            stationlist.orderby(id)
-            foreach(station in stationlist)
-            {
-             AccesAbstrait ch1 = fabrique.CreerAcces(sation1, station2);
-             AjouteChemins(fabrique, ch1);
-            }
-            */
 
+            StationsList.OrderBy(o=>o.id);
+            int count = 0;
+            ZoneAbstraite temp = fabrique.CreerZone("temp");
+            foreach (ZoneAbstraite station in StationsList)
+            {
+                if (count == 0)
+                {
+                    temp = station;
+                }
+                else {
+                    AccesAbstrait ch = fabrique.CreerAcces(temp, station);
+                    AjouteRail(fabrique, ch);
+                    temp = station;
+                }
+            }
         }
-
+        //-------------------------------------------------------------------------
         public virtual void AjoutePersonnage(PersonnageAbstrait unPersonnage)
         {
             PersonnagesList.Add(unPersonnage);
             ZoneAbstraitsList[0].AjoutePersonnage(unPersonnage);
             unPersonnage.Position = ZoneAbstraitsList[0];
         }
-
-        public virtual void AjouteTrain(PersonnageAbstrait unTrain)
+        //------------------------------------------------------------------------
+        public virtual void AjouteTrain(PersonnageAbstrait unTrain, string depart)
         {
+            int pos = Int32.Parse(depart);
+            
             TrainsList.Add(unTrain);
-            //lecture xml
-            // int position = xml.pos;
-            StationsList[0].AjoutePersonnage(unTrain);
-            unTrain.Position = ZoneAbstraitsList[0];
+            StationsList[pos].AjoutePersonnage(unTrain);
+            unTrain.Position = StationsList[pos];
         }
-
+        //--------------------------------------------------------------------
         public void ChargerPersonnages(FabriqueAbstraite fabrique)
         {
             AjoutePersonnage(fabrique.CreerPersonnage("jacques"));
             AjoutePersonnage(fabrique.CreerPersonnage("beatrice"));
         }
-
+        //---------------------------------------------------------------------
         public void ChargerTrains(FabriqueAbstraite fabrique)
         {
-            //LIRE XML AJOUTER DYNAMIQUEMENT LES TRAINS
-            /*
-            foreach(train in TrainList)
+            scenario = XDocument.Load("scenarioMetro.xml");
+            foreach(XElement node in scenario.Descendants("trains").Nodes())
             {
-             AjoutePersonnage(fabrique.CreerPersonnage(train.name));
+                if(node.Element("train") != null)
+                {
+                    AjouteTrain(fabrique.CreerPersonnage(node.Element("train").Attribute("name").Value), node.Element("train").Element("depart").Value);
+                }
             }
-            */
         }
         //----------------------------------------------------------------------
         private void AjouteZoneAbstraits(params ZoneAbstraite[] zoneAbstraitsArray)
         {
             ZoneAbstraitsList.AddRange(zoneAbstraitsArray);
         }
-
+        //---------------------------------------------------------------------
+        private void AjouteStationAbstraits(ZoneAbstraite station)
+        {
+            StationsList.Add(station);
+        }
         //----------------------------------------------------------------------
         private void AjouteChemins(FabriqueAbstraite fabrique, params AccesAbstrait[] accesArray)
         {
@@ -116,8 +142,14 @@ namespace LibAbstraite.GestionEnvironnement
                 AccesAbstraitsList.Add(accesInverse);
             }
         }
-
-        
+        //------------------------------------------------------------------------------------------
+        private void AjouteRail(FabriqueAbstraite fabrique, AccesAbstrait rail)
+        {
+            RailsList.Add(rail);
+            AccesAbstrait accesInverse = fabrique.CreerAcces(rail.Fin, rail.Debut);
+            RailsList.Add(rail);
+        }
+        //-------------------------------------------------------------------------------------------
         public string Simuler()
         {
             StringBuilder sb = new StringBuilder();
