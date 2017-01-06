@@ -44,7 +44,6 @@
     <Compile Include="GestionEnvironnement\Station.cs" />
     <Compile Include="GestionPersonnages\Fourmi.cs" />
     <Compile Include="GestionPersonnages\Train.cs" />
-    <Compile Include="Outils\DataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

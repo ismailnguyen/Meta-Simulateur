@@ -29,12 +29,15 @@ namespace FourmiliereConsole
             FabriqueAbstraite depotMetro = new FabriqueMetro();
             EnvironnementAbstrait Metro = depotMetro.CreerEnvironment();
 
-            Metro.ChargerEnvironnement(depotMetro);
-            Metro.ChargerPersonnages(depotMetro);
+            Metro.ChargerLigne(depotMetro);
+            Console.WriteLine("ligne chargée");
+            Metro.ChargerTrains(depotMetro);
+            Console.WriteLine("trains chargés");
 
             for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine(Metro.Simuler());
+                Console.WriteLine("simulation");
+                Console.WriteLine(Metro.SimulerMetro());
             }
 
             Console.ReadLine();

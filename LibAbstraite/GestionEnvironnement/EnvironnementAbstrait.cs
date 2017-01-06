@@ -58,15 +58,19 @@ namespace LibAbstraite.GestionEnvironnement
             scenario = XDocument.Load("scenarioMetro.xml");
             foreach (XElement node in scenario.Descendants("lignes").Nodes())
             {
-                if(node.Element("ligne") != null)
+                if(node.Descendants("ligne") != null)
                 {
-                    if(node.Element("stations") != null)
+                    if(node.Descendants("stations") != null)
                     {
                         foreach (XElement st in scenario.Descendants("stations").Nodes())
                         {
-                            ZoneAbstraite station = fabrique.CreerZone(st.Element("station").Attribute("name").Value);
-                            station.id = Int32.Parse(st.Element("station").Attribute("name").Value);
-                            AjouteStationAbstraits(station);
+                            
+                            if (st.Descendants("station") != null)
+                            {
+                                ZoneAbstraite station = fabrique.CreerZone(st.Attribute("name").Value);
+                                station.id = Int32.Parse(st.Attribute("id").Value);
+                                AjouteStationAbstraits(station);
+                            }
                         }
                     }
                 }
@@ -86,6 +90,7 @@ namespace LibAbstraite.GestionEnvironnement
                     AjouteRail(fabrique, ch);
                     temp = station;
                 }
+                count += 1;
             }
         }
         //-------------------------------------------------------------------------
@@ -114,12 +119,21 @@ namespace LibAbstraite.GestionEnvironnement
         public void ChargerTrains(FabriqueAbstraite fabrique)
         {
             scenario = XDocument.Load("scenarioMetro.xml");
-            foreach(XElement node in scenario.Descendants("trains").Nodes())
+            foreach(XElement node in scenario.Descendants("lignes").Nodes())
             {
-                if(node.Element("train") != null)
+                if(node.Descendants("ligne") != null)
                 {
-                    AjouteTrain(fabrique.CreerPersonnage(node.Element("train").Attribute("name").Value), node.Element("train").Element("depart").Value);
-                }
+                    if (node.Descendants("trains") != null)
+                    {
+                        if (node.Descendants("train") != null)
+                        {
+                            //GERE ICI + DEPART/ARRIVEE
+                            //string depart = node.Element("train").Attribute("depart").Value;
+                            AjouteTrain(fabrique.CreerPersonnage(node.Element("train").Attribute("name").Value), "1");
+                            
+                        }
+                    }
+                 }
             }
         }
         //----------------------------------------------------------------------
@@ -147,7 +161,7 @@ namespace LibAbstraite.GestionEnvironnement
         {
             RailsList.Add(rail);
             AccesAbstrait accesInverse = fabrique.CreerAcces(rail.Fin, rail.Debut);
-            RailsList.Add(rail);
+            RailsList.Add(accesInverse);
         }
         //-------------------------------------------------------------------------------------------
         public string Simuler()
@@ -173,17 +187,33 @@ namespace LibAbstraite.GestionEnvironnement
             }
             return sb.ToString();
         }
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------
         public string SimulerMetro()
         {
             StringBuilder sb = new StringBuilder();
             foreach(PersonnageAbstrait unTrain in TrainsList)
             {
                 ZoneAbstraite source = unTrain.Position;
-            }
-            return "coucou";
-        }
 
+                //Si ce n'est pas le terminus
+                if(RailsList.Count > 0)
+                {
+                    //Changer de méthode (pas de hasard)
+                    ZoneAbstraite cible = unTrain.ChoixZoneSuivante(RailsList);
+
+                    DeplacerPersonnage(unTrain, source, cible);
+                    sb.AppendFormat("{0} : {1} --> {2}\n", unTrain.Nom, source.Nom,
+                        cible.Nom);
+                }
+                else
+                {
+                    sb.AppendFormat("{0} : terminus\n", unTrain.Nom);
+                }
+            }
+            //RETOURNER JSON
+            return sb.ToString();
+        }
+        //-----------------------------------------------------------------------------------------------------------------------------------------------
         private void DeplacerPersonnage(PersonnageAbstrait unPersonnage, ZoneAbstraite zoneAbstraiteCible,
             ZoneAbstraite zoneAbstraiteSource)
         {
@@ -192,7 +222,7 @@ namespace LibAbstraite.GestionEnvironnement
             zoneAbstraiteCible.AjoutePersonnage(unPersonnage);
         }
 
-
+        //--------------------------------------------------------------------------------------------------------------------------------------------------
         public string Statistiques()
         {
             StringBuilder sb = new StringBuilder();
