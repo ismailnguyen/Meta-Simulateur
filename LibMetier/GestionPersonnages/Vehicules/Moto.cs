@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
-using LibMetier.GestionEnvironnement.Autoroute;
 using LibMetier.Calculs;
 
 namespace LibMetier.GestionPersonnages.Vehicules
@@ -23,6 +22,11 @@ namespace LibMetier.GestionPersonnages.Vehicules
             Carburant = calculs.CarburantConsommé(distanceParcourue, Carburant);
 
             return autoroute.Fin;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("[Moto, {0}, {1}]", Nom, Carburant);
         }
     }
 }

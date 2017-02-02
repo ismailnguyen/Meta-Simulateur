@@ -17,11 +17,11 @@ namespace AutoroutesConsole
 
         static void SimulerAutoroutes()
         {
-            Console.WriteLine("----- Réseau autoroutiers -----");
+            Console.WriteLine("----- Réseau autoroutiers ----- \n\n");
 
             SimulateurAbstrait simulateur = new SimulateurAutoroutes("scenarioAutoroutes.xml");
 
-            simulateur.Initialiser();
+            simulateur.ChargerEnvironnement();
 
             Console.WriteLine(simulateur.LancerSimulation());
         }

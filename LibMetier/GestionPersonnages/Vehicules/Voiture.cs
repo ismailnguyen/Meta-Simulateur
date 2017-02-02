@@ -24,5 +24,10 @@ namespace LibMetier.GestionPersonnages.Vehicules
 
             return autoroute.Fin;
         }
+
+        public override string ToString()
+        {
+            return string.Format("[Voiture, {0}, {1}]", Nom, Carburant);
+        }
     }
 }

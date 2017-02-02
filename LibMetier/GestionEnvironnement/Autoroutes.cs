@@ -1,62 +1,39 @@
 ﻿using LibAbstraite.GestionEnvironnement;
-using LibAbstraite.GestionPersonnages;
 using LibMetier.GestionPersonnages;
-using LibMetier.GestionPersonnages.Vehicules;
 using System.Text;
 
 namespace LibMetier.GestionEnvironnement
 {
     public class Autoroutes : EnvironnementAbstrait
     {
-        protected override void DeplacerPersonnage(PersonnageAbstrait unPersonnage, ZoneAbstraite zoneAbstraiteCible,
-            ZoneAbstraite zoneAbstraiteSource)
-        {
-            base.DeplacerPersonnage(unPersonnage, zoneAbstraiteCible, zoneAbstraiteSource);
-
-
-            ((Vehicule)unPersonnage).Carburant--;
-        }
-
         public override string Simuler()
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (PersonnageAbstrait unPersonnage in PersonnagesList)
+            foreach (Vehicule vehicule in PersonnagesList)
             {
-                ZoneAbstraite zoneAbstraiteSource = unPersonnage.Position;
+                ZoneAbstraite zoneAbstraiteSource = vehicule.Position;
 
                 var accesList = zoneAbstraiteSource.AccesAbstraitList;
                 if (accesList.Count > 0)
                 {
-                    ZoneAbstraite zoneAbstraiteCible = unPersonnage.ChoixZoneSuivante(accesList);
+                    ZoneAbstraite zoneAbstraiteCible = vehicule.ChoixZoneSuivante(accesList);
 
-                    DeplacerPersonnage(unPersonnage, zoneAbstraiteSource, zoneAbstraiteCible);
+                    if (vehicule.Carburant > 0)
+                    {
+                        DeplacerPersonnage(vehicule, zoneAbstraiteSource, zoneAbstraiteCible);
 
-                    var typeVéhicule = "";
-                    if (unPersonnage.GetType() == typeof(Moto))
-                    {
-                        typeVéhicule = "Moto";
+                        sb.AppendFormat(
+                            "{0} : {1} à {2}\n",
+                            vehicule.ToString(),
+                            zoneAbstraiteSource.Nom,
+                            zoneAbstraiteCible.Nom
+                        );
                     }
-                    else if (unPersonnage.GetType() == typeof(Camion))
-                    {
-                        typeVéhicule = "Camion";
-                    }
-                    else
-                    {
-                        typeVéhicule = "Voiture";
-                    }
-
-                    sb.AppendFormat(
-                        "{0} {1} va de {2} à {3} en prenant l'autoroute \n",
-                        typeVéhicule,
-                        unPersonnage.Nom, 
-                        zoneAbstraiteSource.Nom,
-                        zoneAbstraiteCible.Nom
-                    );
                 }
                 else
                 {
-                    sb.AppendFormat("{0} : dans cul de sac\n", unPersonnage.Nom);
+                    sb.AppendFormat("{0} : dans cul de sac\n", vehicule.ToString());
                 }
             }
 

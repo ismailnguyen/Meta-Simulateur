@@ -16,12 +16,12 @@ namespace LibMetier.Fabriques
 
         public override ZoneAbstraite CreerZone(string nom)
         {
-            return new Autoroute(nom);
+            return new Ville(nom);
         }
 
         public override AccesAbstrait CreerAcces(ZoneAbstraite zdebut, ZoneAbstraite zfin)
         {
-            return new Ville(zdebut, zfin);
+            return new Autoroute(zdebut, zfin);
         }
 
         public override PersonnageAbstrait CreerPersonnage(string nom)

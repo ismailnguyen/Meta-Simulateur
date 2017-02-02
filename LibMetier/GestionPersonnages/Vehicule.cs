@@ -1,6 +1,7 @@
 ﻿using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionPersonnages;
 using LibMetier.GestionEnvironnement.Autoroute;
+using LibMetier.GestionPersonnages.Vehicules;
 using System.Collections.Generic;
 
 namespace LibMetier.GestionPersonnages
@@ -27,5 +28,7 @@ namespace LibMetier.GestionPersonnages
 
             return autoroute;
         }
+
+        public abstract override string ToString();
     }
 }
