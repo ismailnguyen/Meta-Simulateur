@@ -9,8 +9,10 @@ namespace LibAbstraite.GestionPersonnages
         protected static readonly Random Hasard = new Random();
 
         public string Nom { get; set; }
+        public int nbPassager { get; set; }
 
         public ZoneAbstraite Position { get; set; }
+        
 
         protected PersonnageAbstrait()
         {
