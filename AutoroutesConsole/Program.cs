@@ -23,7 +23,15 @@ namespace AutoroutesConsole
 
             simulateur.ChargerEnvironnement();
 
-            Console.WriteLine(simulateur.LancerSimulation());
+            // Launch four simulation with 2 seconds waiting between each simulation
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine(simulateur.LancerSimulation());
+
+                System.Threading.Thread.Sleep(2000);
+            }
+
+            Console.WriteLine(simulateur.Environnement.Statistiques());
         }
     }
 }

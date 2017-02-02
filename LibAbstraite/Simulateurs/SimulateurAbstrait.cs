@@ -1,6 +1,9 @@
 ﻿using LibAbstraite.Fabriques;
 using LibAbstraite.GestionEnvironnement;
 using System.Text;
+using System;
+using System.Threading;
+
 
 namespace LibAbstraite.Simulateurs
 {
@@ -11,10 +14,10 @@ namespace LibAbstraite.Simulateurs
 
         public abstract void ChargerEnvironnement();
 
-        // By default launch 10 iteration of simulation
+        // By default launch 1 iteration of simulation and no sleep interval
         public virtual string LancerSimulation()
         {
-            return LancerSimulation(10);
+            return LancerSimulation(1);
         }
 
         public virtual string LancerSimulation(int iteration)

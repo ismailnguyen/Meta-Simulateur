@@ -8,6 +8,9 @@ namespace LibMetier.GestionEnvironnement
     {
         public override string Simuler()
         {
+            // Remove all vehicles with no fuel
+            PersonnagesList.RemoveAll(vehicle => ((Vehicule)vehicle).Carburant <= 0);
+
             StringBuilder sb = new StringBuilder();
 
             foreach (Vehicule vehicule in PersonnagesList)
@@ -19,17 +22,14 @@ namespace LibMetier.GestionEnvironnement
                 {
                     ZoneAbstraite zoneAbstraiteCible = vehicule.ChoixZoneSuivante(accesList);
 
-                    if (vehicule.Carburant > 0)
-                    {
-                        DeplacerPersonnage(vehicule, zoneAbstraiteSource, zoneAbstraiteCible);
+                    DeplacerPersonnage(vehicule, zoneAbstraiteSource, zoneAbstraiteCible);
 
-                        sb.AppendFormat(
-                            "{0} : {1} à {2}\n",
-                            vehicule.ToString(),
-                            zoneAbstraiteSource.Nom,
-                            zoneAbstraiteCible.Nom
-                        );
-                    }
+                    sb.AppendFormat(
+                        "{0} : {1} à {2}\n",
+                        vehicule.ToString(),
+                        zoneAbstraiteSource.Nom,
+                        zoneAbstraiteCible.Nom
+                    );
                 }
                 else
                 {
