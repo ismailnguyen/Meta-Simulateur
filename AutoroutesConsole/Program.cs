@@ -1,6 +1,5 @@
-﻿using LibAbstraite.Fabriques;
-using LibAbstraite.GestionEnvironnement;
-using LibMetier.Fabriques;
+﻿using LibAbstraite.Simulateurs;
+using LibMetier.Simulateurs;
 using System;
 
 namespace AutoroutesConsole
@@ -9,22 +8,22 @@ namespace AutoroutesConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("----- Réseau autoroutiers -----");
-
-            FabriqueAbstraite uneFabrique = new FabriqueAutoroutes();
-
-            EnvironnementAbstrait reseauAutoroutiers = uneFabrique.CreerEnvironment();
-            reseauAutoroutiers.ChargerEnvironnement(uneFabrique);
-            reseauAutoroutiers.ChargerPersonnages(uneFabrique);
-
-            Console.WriteLine(reseauAutoroutiers.Statistiques());
-
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine(reseauAutoroutiers.Simuler());
-            }
+            SimulerAutoroutes();
+            //SimulerFourmilière();
+            //SimulerMetro();
 
             Console.ReadLine();
+        }
+
+        static void SimulerAutoroutes()
+        {
+            Console.WriteLine("----- Réseau autoroutiers -----");
+
+            SimulateurAbstrait simulateur = new SimulateurAutoroutes("scenarioAutoroutes.xml");
+
+            simulateur.Initialiser();
+
+            Console.WriteLine(simulateur.LancerSimulation());
         }
     }
 }

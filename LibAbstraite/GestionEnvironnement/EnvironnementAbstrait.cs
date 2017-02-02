@@ -69,7 +69,7 @@ namespace LibAbstraite.GestionEnvironnement
         }
 
         
-        public string Simuler()
+        public virtual string Simuler()
         {
             StringBuilder sb = new StringBuilder();
             foreach (PersonnageAbstrait unPersonnage in PersonnagesList)
@@ -93,7 +93,7 @@ namespace LibAbstraite.GestionEnvironnement
             return sb.ToString();
         }
 
-        private void DeplacerPersonnage(PersonnageAbstrait unPersonnage, ZoneAbstraite zoneAbstraiteCible,
+        protected virtual void DeplacerPersonnage(PersonnageAbstrait unPersonnage, ZoneAbstraite zoneAbstraiteCible,
             ZoneAbstraite zoneAbstraiteSource)
         {
             unPersonnage.Position = zoneAbstraiteCible;
@@ -101,7 +101,7 @@ namespace LibAbstraite.GestionEnvironnement
             zoneAbstraiteCible.AjoutePersonnage(unPersonnage);
         }
 
-        public string Statistiques()
+        public virtual string Statistiques()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(ZoneAbstraitsList.Count + " Zones");

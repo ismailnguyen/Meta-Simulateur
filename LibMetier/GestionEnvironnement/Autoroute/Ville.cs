@@ -2,9 +2,9 @@
 
 namespace LibMetier.GestionEnvironnement.Autoroute
 {
-    public class Voie : ZoneAbstraite
+    public class Ville : ZoneAbstraite
     {
-        public Voie(string unNom) : base(unNom)
+        public Ville(string unNom) : base(unNom)
         {
         }
     }

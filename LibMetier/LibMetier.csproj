@@ -37,8 +37,8 @@
     <Compile Include="Fabriques\FabriqueAutoroutes.cs" />
     <Compile Include="Fabriques\FabriqueFoumiliere.cs" />
     <Compile Include="GestionEnvironnement\Autoroutes.cs" />
-    <Compile Include="GestionEnvironnement\Autoroute\Insertion.cs" />
-    <Compile Include="GestionEnvironnement\Autoroute\Voie.cs" />
+    <Compile Include="GestionEnvironnement\Autoroute\Autoroute.cs" />
+    <Compile Include="GestionEnvironnement\Autoroute\Ville.cs" />
     <Compile Include="GestionEnvironnement\BoutDeTerrain.cs" />
     <Compile Include="GestionEnvironnement\Chemin.cs" />
     <Compile Include="GestionEnvironnement\Fourmiliere.cs" />
@@ -48,6 +48,7 @@
     <Compile Include="GestionPersonnages\Vehicules\Moto.cs" />
     <Compile Include="GestionPersonnages\Vehicules\Voiture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulateurs\SimulateurAutoroutes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibAbstraite\LibAbstraite.csproj">
