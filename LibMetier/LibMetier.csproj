@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Calculs\CalculCarburantAbstrait.cs" />
+    <Compile Include="Calculs\CalculsCarburantCamion.cs" />
+    <Compile Include="Calculs\CalculsCarburantMoto.cs" />
+    <Compile Include="Calculs\CalculsCarburantVoiture.cs" />
     <Compile Include="Fabriques\FabriqueAutoroutes.cs" />
     <Compile Include="Fabriques\FabriqueFoumiliere.cs" />
     <Compile Include="GestionEnvironnement\Autoroutes.cs" />

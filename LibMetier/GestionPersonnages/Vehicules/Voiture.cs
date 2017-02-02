@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
 using LibMetier.GestionEnvironnement.Autoroute;
+using LibMetier.Calculs;
 
 namespace LibMetier.GestionPersonnages.Vehicules
 {
@@ -13,22 +14,13 @@ namespace LibMetier.GestionPersonnages.Vehicules
 
         public override ZoneAbstraite ChoixZoneSuivante(List<AccesAbstrait> accesList)
         {
-            var autoroute = (Autoroute) accesList[Hasard.Next(accesList.Count)];
-
-            // Check if highway is not already full, else choose an other route
-            while (autoroute.Capacité <= 0)
-            {
-                autoroute = (Autoroute) accesList[Hasard.Next(accesList.Count)];
-            }
+            var autoroute = ProchaineAutorouteLibre(accesList);
 
             var distanceParcourue = autoroute.Distance;
 
-            var carburantConsommé = distanceParcourue / 4;
+            CalculCarburantAbstrait calculs = new CalculsCarburantVoiture();
 
-            var carburantRestant = Carburant - carburantConsommé;
-
-            // Remove consummed fuel according with traveled distance
-            Carburant = carburantRestant <= 0 ? 0 : carburantRestant;
+            Carburant = calculs.CarburantConsommé(distanceParcourue, Carburant);
 
             return autoroute.Fin;
         }
