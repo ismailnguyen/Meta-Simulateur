@@ -16,11 +16,11 @@ namespace LibAbstraite.GestionEnvironnement
         public List<AccesAbstrait> AccesAbstraitsList { get; set; }
 
         public List<PersonnageAbstrait> TrainsList { get; set; }
-        public List<ZoneAbstraite> StationsList { get; set; }
-        public List<AccesAbstrait> RailsList { get; set; }
+        public List<ZoneAbstraite>  StationsList { get; set; }
+        public List<AccesAbstrait>  RailsList { get; set; }
 
         private XDocument scenario;
-
+        
 
         protected EnvironnementAbstrait()
         {
@@ -33,11 +33,11 @@ namespace LibAbstraite.GestionEnvironnement
             RailsList = new List<AccesAbstrait>();
         }
 
-
+       
 
         //----------------------------------------------------------------------
         public void ChargerEnvironnement(FabriqueAbstraite fabrique)
-        {
+        { 
             ZoneAbstraite b1 = fabrique.CreerZone("b1-Depart");
             ZoneAbstraite b2 = fabrique.CreerZone("b2");
             ZoneAbstraite b3 = fabrique.CreerZone("b3");
@@ -57,16 +57,16 @@ namespace LibAbstraite.GestionEnvironnement
         public void ChargerLigne(FabriqueAbstraite fabrique)
         {
             scenario = XDocument.Load("scenarioMetro.xml");
-
+            
             foreach (XElement node in scenario.Descendants("lignes").Nodes())
             {
-                if (node.Descendants("ligne") != null)
+                if(node.Descendants("ligne") != null)
                 {
-                    if (node.Descendants("stations") != null)
+                    if(node.Descendants("stations") != null)
                     {
                         foreach (XElement st in scenario.Descendants("stations").Nodes())
                         {
-
+                            
                             if (st.Descendants("station") != null)
                             {
                                 ZoneAbstraite station = fabrique.CreerZone(st.Attribute("name").Value);
@@ -78,7 +78,7 @@ namespace LibAbstraite.GestionEnvironnement
                 }
             }
 
-            StationsList.OrderBy(o => o.id);
+            StationsList.OrderBy(o=>o.id);
             int count = 0;
             ZoneAbstraite temp = fabrique.CreerZone("temp");
             foreach (ZoneAbstraite station in StationsList)
@@ -107,7 +107,7 @@ namespace LibAbstraite.GestionEnvironnement
         {
             int pos = Int32.Parse(depart);
             pos -= 1;
-
+            
             TrainsList.Add(unTrain);
             StationsList[pos].AjoutePersonnage(unTrain);
             unTrain.Position = StationsList[pos];
@@ -122,9 +122,9 @@ namespace LibAbstraite.GestionEnvironnement
         public void ChargerTrains(FabriqueAbstraite fabrique)
         {
             scenario = XDocument.Load("scenarioMetro.xml");
-            foreach (XElement node in scenario.Descendants("lignes").Nodes())
+            foreach(XElement node in scenario.Descendants("lignes").Nodes())
             {
-                if (node.Descendants("ligne") != null)
+                if(node.Descendants("ligne") != null)
                 {
                     if (node.Descendants("trains") != null)
                     {
@@ -140,7 +140,7 @@ namespace LibAbstraite.GestionEnvironnement
                             }
                         }
                     }
-                }
+                 }
             }
         }
         //----------------------------------------------------------------------
@@ -202,8 +202,8 @@ namespace LibAbstraite.GestionEnvironnement
             int flag = 0;
             string jsonoutput;
 
-            foreach (PersonnageAbstrait unTrain in TrainsList)
-            {
+             foreach(PersonnageAbstrait unTrain in TrainsList)
+              {  
                 foreach (AccesAbstrait acc in RailsList)
                 {
                     if (RailsList.Count > 0)
@@ -213,16 +213,16 @@ namespace LibAbstraite.GestionEnvironnement
                             unTrain.passage = DateTime.Now;
                             for (int i = 0; i < RailsList.Count; i++)
                             {
-                                if (flag == 1) unTrain.passage = unTrain.passage.AddMinutes(4);
+                                if(flag==1) unTrain.passage = unTrain.passage.AddMinutes(4);
                                 else unTrain.passage = unTrain.passage.AddMinutes(2);
                                 unTrain.nbPassager = rnd.Next(1, 100);
                                 DeplacerPersonnage(unTrain, RailsList[i].Debut, RailsList[i].Fin);
-                                //  sb.AppendFormat("{0} : {1} --> {2}, nb passager : {3}, heure de passage : {4}  \n", unTrain.Nom, RailsList[i].Debut.Nom,
-                                //     RailsList[i].Fin.Nom, unTrain.nbPassager, unTrain.passage);
-                                if (i != RailsList.Count)
-                                    i++;
+                              //  sb.AppendFormat("{0} : {1} --> {2}, nb passager : {3}, heure de passage : {4}  \n", unTrain.Nom, RailsList[i].Debut.Nom,
+                           //     RailsList[i].Fin.Nom, unTrain.nbPassager, unTrain.passage);
+                                if(i != RailsList.Count)
+                                 i++;
                                 flag = 1;
-                                jsonoutput = JsonConvert.SerializeObject(unTrain, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+                                jsonoutput = JsonConvert.SerializeObject(unTrain,new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
                                 sb.Append(jsonoutput);
                             }
                             sb.Append("terminus, en attente de départ \n\n\n");
@@ -230,14 +230,14 @@ namespace LibAbstraite.GestionEnvironnement
                         if (acc.Debut.Nom == "Mairie de Montreuil")
                         {
                             unTrain.passage = DateTime.Now;
-                            for (int i = RailsList.Count - 1; i >= 0; i--)
+                            for (int i = RailsList.Count -1; i >= 0; i--)
                             {
                                 unTrain.nbPassager = rnd.Next(1, 100);
                                 if (flag == 1) unTrain.passage = unTrain.passage.AddMinutes(4);
                                 else unTrain.passage = unTrain.passage.AddMinutes(2);
                                 DeplacerPersonnage(unTrain, RailsList[i].Debut, RailsList[i].Fin);
-                                //  sb.AppendFormat("{0} : {1} --> {2}, nb passager : {3}, heure de passage : {4} \n", unTrain.Nom, RailsList[i].Debut.Nom,
-                                //   RailsList[i].Fin.Nom, unTrain.nbPassager, unTrain.passage);
+                              //  sb.AppendFormat("{0} : {1} --> {2}, nb passager : {3}, heure de passage : {4} \n", unTrain.Nom, RailsList[i].Debut.Nom,
+                             //   RailsList[i].Fin.Nom, unTrain.nbPassager, unTrain.passage);
                                 if (i != 0)
                                     i--;
                                 jsonoutput = JsonConvert.SerializeObject(unTrain, Formatting.None, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
@@ -253,10 +253,10 @@ namespace LibAbstraite.GestionEnvironnement
                         sb.AppendFormat("{0} : au depot \n", unTrain.Nom);
                     }
                 }
-            }
-
+              }
+            
             //RETOURNER JSON
-
+            
             return sb.ToString();
         }
         //-----------------------------------------------------------------------------------------------------------------------------------------------

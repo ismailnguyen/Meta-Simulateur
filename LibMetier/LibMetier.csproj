@@ -39,8 +39,8 @@
     <Compile Include="GestionEnvironnement\BoutDeTerrain.cs" />
     <Compile Include="GestionEnvironnement\Chemin.cs" />
     <Compile Include="GestionEnvironnement\Fourmiliere.cs" />
-    <Compile Include="GestionEnvironnement\Metro.cs" />
     <Compile Include="GestionEnvironnement\Rails.cs" />
+    <Compile Include="GestionEnvironnement\Metro.cs" />
     <Compile Include="GestionEnvironnement\Station.cs" />
     <Compile Include="GestionPersonnages\Fourmi.cs" />
     <Compile Include="GestionPersonnages\Train.cs" />

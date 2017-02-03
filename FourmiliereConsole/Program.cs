@@ -34,11 +34,10 @@ namespace FourmiliereConsole
             Metro.ChargerTrains(depotMetro);
             Console.WriteLine("trains chargés");
 
-            for (int i = 0; i < 10; i++)
-            {
+           
                 Console.WriteLine("simulation");
                 Console.WriteLine(Metro.SimulerMetro());
-            }
+            
 
             Console.ReadLine();
         }

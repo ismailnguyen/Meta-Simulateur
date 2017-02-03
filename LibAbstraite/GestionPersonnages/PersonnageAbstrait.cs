@@ -10,6 +10,7 @@ namespace LibAbstraite.GestionPersonnages
 
         public string Nom { get; set; }
         public int nbPassager { get; set; }
+        public DateTime passage { get; set; }
 
         public ZoneAbstraite Position { get; set; }
         

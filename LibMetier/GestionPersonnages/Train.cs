@@ -13,7 +13,7 @@ namespace LibMetier.GestionPersonnages
     {
         public override ZoneAbstraite ChoixZoneSuivante(List<AccesAbstrait> accesList)
         {
-
+           
             return accesList[Position.id].Fin;
         }
 
