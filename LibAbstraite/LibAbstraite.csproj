@@ -41,6 +41,8 @@
     <Compile Include="GestionEnvironnement\AccesAbstrait.cs" />
     <Compile Include="GestionEnvironnement\EnvironnementAbstrait.cs" />
     <Compile Include="Fabriques\FabriqueAbstraite.cs" />
+    <Compile Include="GestionObservations\IObservable.cs" />
+    <Compile Include="GestionObservations\IObservateur.cs" />
     <Compile Include="GestionPersonnages\PersonnageAbstrait.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GestionEnvironnement\ZoneAbstraite.cs" />

@@ -1,15 +1,29 @@
 ﻿using LibAbstraite.GestionEnvironnement;
+using LibAbstraite.GestionObservations;
 using LibAbstraite.GestionPersonnages;
 using LibMetier.GestionEnvironnement.Autoroute;
-using LibMetier.GestionPersonnages.Vehicules;
 using System.Collections.Generic;
 
 namespace LibMetier.GestionPersonnages
 {
-    public abstract class Vehicule : PersonnageAbstrait
+    public abstract class Vehicule : PersonnageAbstrait, IObservable
     {
+        public List<IObservateur> Observateurs { get; set; }
+
         // Litres
-        public int Carburant { get; set; }
+        public int Carburant
+        {
+            get { return Carburant; }
+            set
+            {
+                if (value <= 0)
+                {
+                    NotifierObservateurs();
+                }
+
+                Carburant = value;
+            }
+        }
 
         protected Vehicule()
         {
@@ -30,5 +44,23 @@ namespace LibMetier.GestionPersonnages
         }
 
         public abstract override string ToString();
+
+        public void AjouterObservateur(IObservateur observateur)
+        {
+            Observateurs.Add(observateur);
+        }
+
+        public void Supprimer(IObservateur observateur)
+        {
+            Observateurs.Remove(observateur);
+        }
+
+        public void NotifierObservateurs()
+        {
+            foreach (var observateur in Observateurs)
+            {
+                observateur.Notifier(this);
+            }
+        }
     }
 }

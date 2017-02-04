@@ -6,11 +6,10 @@ namespace LibMetier.GestionEnvironnement
 {
     public class Autoroutes : EnvironnementAbstrait
     {
+        public Vehicule Dépanneuse { get; set; }
+
         public override string Simuler()
         {
-            // Remove all vehicles with no fuel
-            PersonnagesList.RemoveAll(vehicle => ((Vehicule)vehicle).Carburant <= 0);
-
             StringBuilder sb = new StringBuilder();
 
             foreach (Vehicule vehicule in PersonnagesList)

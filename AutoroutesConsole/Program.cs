@@ -1,6 +1,7 @@
 ﻿using LibAbstraite.Simulateurs;
 using LibMetier.Simulateurs;
 using System;
+using System.Threading;
 
 namespace AutoroutesConsole
 {
@@ -28,7 +29,7 @@ namespace AutoroutesConsole
             {
                 Console.WriteLine(simulateur.LancerSimulation());
 
-                System.Threading.Thread.Sleep(2000);
+                Thread.Sleep(2000);
             }
 
             Console.WriteLine(simulateur.Environnement.Statistiques());

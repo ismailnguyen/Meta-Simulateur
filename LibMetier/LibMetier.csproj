@@ -49,6 +49,7 @@
     <Compile Include="GestionPersonnages\Fourmi.cs" />
     <Compile Include="GestionPersonnages\Vehicule.cs" />
     <Compile Include="GestionPersonnages\Vehicules\Camion.cs" />
+    <Compile Include="GestionPersonnages\Vehicules\Dépanneuse.cs" />
     <Compile Include="GestionPersonnages\Vehicules\Moto.cs" />
     <Compile Include="GestionPersonnages\Vehicules\Voiture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
