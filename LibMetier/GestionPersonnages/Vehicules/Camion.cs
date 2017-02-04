@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
-using LibMetier.GestionEnvironnement.Autoroute;
 using LibMetier.Calculs;
 
 namespace LibMetier.GestionPersonnages.Vehicules
 {
     public class Camion : Vehicule
     {
-        public Camion()
+        public Camion() : base()
         {
             Carburant = 120;
+
+            CalculCarburant = new CalculsCarburantCamion();
         }
 
         public override ZoneAbstraite ChoixZoneSuivante(List<AccesAbstrait> accesList)
@@ -18,9 +19,7 @@ namespace LibMetier.GestionPersonnages.Vehicules
 
             var distanceParcourue = autoroute.Distance;
 
-            CalculCarburantAbstrait calculs = new CalculsCarburantCamion();
-
-            Carburant = calculs.CarburantConsommé(distanceParcourue, Carburant);
+            Carburant = CalculCarburant.CarburantConsommé(distanceParcourue, Carburant);
 
             return autoroute.Fin;
         }

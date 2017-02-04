@@ -1,12 +1,14 @@
 ﻿using LibAbstraite.GestionEnvironnement;
+using LibAbstraite.GestionObservations;
 using LibMetier.GestionPersonnages;
 using System.Text;
+using System.Collections.Generic;
 
 namespace LibMetier.GestionEnvironnement
 {
-    public class Autoroutes : EnvironnementAbstrait
+    public class Autoroutes : EnvironnementAbstrait, IObservateur
     {
-        public Vehicule Dépanneuse { get; set; }
+        protected List<Vehicule> VéhiculesEnPanne = new List<Vehicule>();
 
         public override string Simuler()
         {
@@ -14,6 +16,9 @@ namespace LibMetier.GestionEnvironnement
 
             foreach (Vehicule vehicule in PersonnagesList)
             {
+                // Dépanneuse will observe vehicule to check fuel quantity
+                vehicule.AjouterObservateur(this);
+
                 ZoneAbstraite zoneAbstraiteSource = vehicule.Position;
 
                 var accesList = zoneAbstraiteSource.AccesAbstraitList;
@@ -36,6 +41,8 @@ namespace LibMetier.GestionEnvironnement
                 }
             }
 
+            récupérerVéhiculesEnPanne();
+
             return sb.ToString();
         }
 
@@ -48,6 +55,24 @@ namespace LibMetier.GestionEnvironnement
             sb.AppendLine(AccesAbstraitsList.Count + " autoroutes");
 
             return sb.ToString();
+        }
+
+        // Notify dépanneuse that a vehicule is stopped due to empty fuel
+        public void Notifier(IObservable observable)
+        {
+            var vehicule = (Vehicule)observable;
+
+            if (!VéhiculesEnPanne.Contains(vehicule))
+                VéhiculesEnPanne.Add(vehicule);
+        }
+
+        // Dépanneuse remove car from map
+        private void récupérerVéhiculesEnPanne()
+        {
+            foreach (var vehicule in VéhiculesEnPanne)
+            {
+                PersonnagesList.RemoveAll(v => v.Nom.Equals(vehicule.Nom));
+            }
         }
     }
 }

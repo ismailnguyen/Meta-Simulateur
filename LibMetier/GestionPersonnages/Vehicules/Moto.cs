@@ -6,20 +6,20 @@ namespace LibMetier.GestionPersonnages.Vehicules
 {
     public class Moto : Vehicule
     {
-        public Moto()
+        public Moto() : base()
         {
             Carburant = 15;
+
+            CalculCarburant = new CalculsCarburantMoto();
         }
 
         public override ZoneAbstraite ChoixZoneSuivante(List<AccesAbstrait> accesList)
         {
             var autoroute = ProchaineAutorouteLibre(accesList);
 
-            var distanceParcourue = autoroute.Distance;
+            var distanceParcourue = autoroute.Distance;        
 
-            CalculCarburantAbstrait calculs = new CalculsCarburantMoto();
-
-            Carburant = calculs.CarburantConsommé(distanceParcourue, Carburant);
+            Carburant = CalculCarburant.CarburantConsommé(distanceParcourue, Carburant);
 
             return autoroute.Fin;
         }

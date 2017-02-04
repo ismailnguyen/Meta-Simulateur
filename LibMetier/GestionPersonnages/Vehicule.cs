@@ -1,6 +1,7 @@
 ﻿using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionObservations;
 using LibAbstraite.GestionPersonnages;
+using LibMetier.Calculs;
 using LibMetier.GestionEnvironnement.Autoroute;
 using System.Collections.Generic;
 
@@ -8,12 +9,15 @@ namespace LibMetier.GestionPersonnages
 {
     public abstract class Vehicule : PersonnageAbstrait, IObservable
     {
-        public List<IObservateur> Observateurs { get; set; }
+        protected List<IObservateur> Observateurs { get; set; } = new List<IObservateur>();
+
+        public CalculCarburantAbstrait CalculCarburant { get; set; }
 
         // Litres
+        private int carburant;
         public int Carburant
         {
-            get { return Carburant; }
+            get { return carburant; }
             set
             {
                 if (value <= 0)
@@ -21,13 +25,13 @@ namespace LibMetier.GestionPersonnages
                     NotifierObservateurs();
                 }
 
-                Carburant = value;
+                carburant = value;
             }
         }
 
         protected Vehicule()
         {
-            Carburant = 0;
+            carburant = 0;
         }
 
         protected Autoroute ProchaineAutorouteLibre(List<AccesAbstrait> accesList)
@@ -47,16 +51,25 @@ namespace LibMetier.GestionPersonnages
 
         public void AjouterObservateur(IObservateur observateur)
         {
+            if (Observateurs.Contains(observateur))
+                return;
+
             Observateurs.Add(observateur);
         }
 
         public void Supprimer(IObservateur observateur)
         {
+            if (!Observateurs.Contains(observateur))
+                return;
+
             Observateurs.Remove(observateur);
         }
 
         public void NotifierObservateurs()
         {
+            if (Observateurs == null)
+                return;
+
             foreach (var observateur in Observateurs)
             {
                 observateur.Notifier(this);
