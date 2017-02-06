@@ -1,7 +1,7 @@
-﻿using LibAbstraite.Simulateurs;
-using LibMetier.Simulateurs;
-using System;
+﻿using System;
 using System.Threading;
+using LibAbstraite.Simulateurs;
+using LibMetier.Simulateurs;
 
 namespace AutoroutesConsole
 {
@@ -10,7 +10,7 @@ namespace AutoroutesConsole
         static void Main(string[] args)
         {
             SimulerAutoroutes();
-            //SimulerFourmilière();
+            
             //SimulerMetro();
 
             Console.ReadLine();

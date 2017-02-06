@@ -9,7 +9,7 @@ namespace LibMetier.GestionPersonnages
 {
     public abstract class Vehicule : PersonnageAbstrait, IObservable
     {
-        protected List<IObservateur> Observateurs { get; set; } = new List<IObservateur>();
+        protected IObservateur Observateur { get; set; }
 
         public CalculCarburantAbstrait CalculCarburant { get; set; }
 
@@ -22,7 +22,7 @@ namespace LibMetier.GestionPersonnages
             {
                 if (value <= 0)
                 {
-                    NotifierObservateurs();
+                    NotifierObservateur();
                 }
 
                 carburant = value;
@@ -51,29 +51,20 @@ namespace LibMetier.GestionPersonnages
 
         public void AjouterObservateur(IObservateur observateur)
         {
-            if (Observateurs.Contains(observateur))
-                return;
-
-            Observateurs.Add(observateur);
+            Observateur = observateur;
         }
 
-        public void Supprimer(IObservateur observateur)
+        public void SupprimerObservateur(IObservateur observateur)
         {
-            if (!Observateurs.Contains(observateur))
-                return;
-
-            Observateurs.Remove(observateur);
+            Observateur = null;
         }
 
-        public void NotifierObservateurs()
+        public void NotifierObservateur()
         {
-            if (Observateurs == null)
+            if (Observateur == null)
                 return;
 
-            foreach (var observateur in Observateurs)
-            {
-                observateur.Notifier(this);
-            }
+            Observateur.Notifier(this);
         }
     }
 }

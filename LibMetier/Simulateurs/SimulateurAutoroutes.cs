@@ -1,6 +1,5 @@
 ﻿using LibAbstraite.Simulateurs;
 using LibMetier.Fabriques;
-using LibMetier.GestionEnvironnement;
 using System.Xml.Linq;
 using System.Linq;
 using LibMetier.GestionPersonnages.Vehicules;
@@ -19,7 +18,7 @@ namespace LibMetier.Simulateurs
             Fabrique = new FabriqueAutoroutes();
 
             // Initialisation of a highway environment
-            Environnement = new Autoroutes();
+            Environnement = Fabrique.CreerEnvironment();
         }
 
         /***
@@ -34,9 +33,10 @@ namespace LibMetier.Simulateurs
             foreach (XElement categorie in scenario.Descendants("simulation"))
             {
                 // Cities
-                if (categorie.Descendants("villes") != null)
+                var villes = categorie.Descendants("villes");
+                if (villes != null)
                 {
-                    foreach (XElement ville in categorie.Descendants("villes").Nodes())
+                    foreach (XElement ville in villes.Nodes())
                     {
                         // Add each city to zone list
                         var zone = Fabrique.CreerZone(ville.Attribute("nom").Value);
@@ -45,9 +45,10 @@ namespace LibMetier.Simulateurs
                 }
 
                 // Highways
-                if (categorie.Descendants("autoroutes") != null)
+                var autoroutes = categorie.Descendants("autoroutes");
+                if (autoroutes != null)
                 {
-                    foreach (XElement autoroute in categorie.Descendants("autoroutes").Nodes())
+                    foreach (XElement autoroute in autoroutes.Nodes())
                     {
                         // We retrieve cities from departure and arrival of this highway
                         var entree = Environnement.ZoneAbstraitsList.Where(x => x.Nom.Equals(autoroute.Attribute("entree").Value)).FirstOrDefault();
@@ -60,10 +61,11 @@ namespace LibMetier.Simulateurs
                 }
 
                 // If we are looking for vehicles
-                if (categorie.Descendants("vehicules") != null)
+                var vehicules = categorie.Descendants("vehicules");
+                if (vehicules != null)
                 {
                     // Create vehicule with associated type
-                    foreach (XElement vehicule in categorie.Descendants("vehicules").Nodes())
+                    foreach (XElement vehicule in vehicules.Nodes())
                     {
                         var carburant = int.Parse(vehicule.Attribute("carburant").Value);
                         var immatriculation = vehicule.Attribute("plaque").Value;

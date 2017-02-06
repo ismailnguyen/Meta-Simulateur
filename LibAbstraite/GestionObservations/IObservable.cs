@@ -3,7 +3,7 @@
     public interface IObservable
     {
         void AjouterObservateur(IObservateur observateur);
-        void Supprimer(IObservateur observateur);
-        void NotifierObservateurs();
+        void SupprimerObservateur(IObservateur observateur);
+        void NotifierObservateur();
     }
 }

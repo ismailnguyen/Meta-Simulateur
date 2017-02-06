@@ -17,8 +17,6 @@ namespace LibAbstraite.GestionEnvironnement
             AccesAbstraitsList = new List<AccesAbstrait>();
         }
 
-       
-
         //----------------------------------------------------------------------
         public void ChargerEnvironnement(FabriqueAbstraite fabrique)
         {

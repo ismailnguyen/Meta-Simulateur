@@ -3,15 +3,11 @@ using LibAbstraite.GestionPersonnages;
 
 namespace LibAbstraite.GestionEnvironnement
 {
-    public abstract class  ZoneAbstraite
+    public abstract class ZoneAbstraite
     {
         public string Nom { get; set; }
-
         public List<AccesAbstrait> AccesAbstraitList { get; set; }
-
         public List<PersonnageAbstrait> PersonnagesList { get; set; }
-
-        // public List<Objet> ObjetsList { get; set; }
 
         protected ZoneAbstraite(string unNom)
         {
@@ -34,7 +30,5 @@ namespace LibAbstraite.GestionEnvironnement
         {
             AccesAbstraitList.Add(acces);
         }
-
-
     }
 }
