@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroConsole", "MetroConsol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaSimulateur", "MetaSimulateur\MetaSimulateur.csproj", "{44C71A73-DB8B-477B-B761-DD2CB1486E90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoroutesUi", "AutoroutesUi\AutoroutesUi.csproj", "{043012B8-5D89-4AF3-9763-B4E833B559C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{44C71A73-DB8B-477B-B761-DD2CB1486E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44C71A73-DB8B-477B-B761-DD2CB1486E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44C71A73-DB8B-477B-B761-DD2CB1486E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{043012B8-5D89-4AF3-9763-B4E833B559C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{043012B8-5D89-4AF3-9763-B4E833B559C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{043012B8-5D89-4AF3-9763-B4E833B559C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{043012B8-5D89-4AF3-9763-B4E833B559C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
