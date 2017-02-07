@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using LibAbstraite.Fabriques;
+﻿using System.Text;
+using System.Collections.Generic;
 using LibAbstraite.GestionPersonnages;
-using System.Linq;
-using System.Xml.Linq;
-using System;
 
 namespace LibAbstraite.GestionEnvironnement
 {

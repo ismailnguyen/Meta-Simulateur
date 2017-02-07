@@ -43,7 +43,7 @@ namespace LibMetier.Simulateurs
                         foreach (XElement st in stations.Nodes())
                         {
                             ZoneAbstraite station = Fabrique.CreerZone(st.Attribute("name").Value);
-                            station.id = int.Parse(st.Attribute("id").Value);
+                            ((Station)station).Id = int.Parse(st.Attribute("id").Value);
                             Environnement.AjouteZoneAbstraits(station);
                         }
                     }
@@ -61,7 +61,7 @@ namespace LibMetier.Simulateurs
                 }
             }
 
-            Environnement.ZoneAbstraitsList.OrderBy(o => o.id);
+            Environnement.ZoneAbstraitsList.OrderBy(station => ((Station)station).Id);
 
             int count = 0;
             ZoneAbstraite temp = Fabrique.CreerZone("temp");

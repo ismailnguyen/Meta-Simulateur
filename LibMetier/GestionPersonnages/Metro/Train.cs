@@ -1,6 +1,7 @@
 ﻿using LibAbstraite.GestionPersonnages;
 using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
+using LibMetier.GestionEnvironnement.Metro;
 
 namespace LibMetier.GestionPersonnages.Metro
 {
@@ -8,7 +9,7 @@ namespace LibMetier.GestionPersonnages.Metro
     {
         public override ZoneAbstraite ChoixZoneSuivante(List<AccesAbstrait> accesList)
         {
-            return accesList[Position.id].Fin;
+            return accesList[((Station)Position).Id].Fin;
         }
 
         public override string ToString()
