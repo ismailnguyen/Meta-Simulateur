@@ -6,11 +6,9 @@ namespace LibAbstraite.GestionEnvironnement
     public abstract class ZoneAbstraite
     {
         public string Nom { get; set; }
-<<<<<<< HEAD
 
         public int id { get; set; }
-=======
->>>>>>> refs/remotes/origin/simulation/fourmiliere
+
         public List<AccesAbstrait> AccesAbstraitList { get; set; }
         public List<PersonnageAbstrait> PersonnagesList { get; set; }
 

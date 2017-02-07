@@ -1,6 +1,6 @@
 ﻿using LibAbstraite.GestionEnvironnement;
 
-namespace LibMetier.GestionEnvironnement
+namespace LibMetier.GestionEnvironnement.Fourmiliere
 {
     public class Chemin : AccesAbstrait
     {

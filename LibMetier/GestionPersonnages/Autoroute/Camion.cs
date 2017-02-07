@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
-using LibMetier.Calculs;
-using LibMetier.GestionEnvironnement.Autoroute;
+using LibMetier.Calculs.Autoroute;
 
-namespace LibMetier.GestionPersonnages.Vehicules
+namespace LibMetier.GestionPersonnages.Autoroute
 {
-    public class Voiture : Vehicule
+    public class Camion : Vehicule
     {
-        public Voiture() : base()
+        public Camion() : base()
         {
-            Carburant = 50;
+            Carburant = 120;
 
-            CalculCarburant = new CalculsCarburantVoiture();
+            CalculCarburant = new CalculsCarburantCamion();
         }
 
         public override ZoneAbstraite ChoixZoneSuivante(List<AccesAbstrait> accesList)
@@ -27,7 +26,7 @@ namespace LibMetier.GestionPersonnages.Vehicules
 
         public override string ToString()
         {
-            return string.Format("[Voiture, {0}, {1}]", Nom, Carburant);
+            return string.Format("[Camion, {0}, {1}]", Nom, Carburant);
         }
     }
 }

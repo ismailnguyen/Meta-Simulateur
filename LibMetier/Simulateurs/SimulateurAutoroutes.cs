@@ -2,7 +2,7 @@
 using LibMetier.Fabriques;
 using System.Xml.Linq;
 using System.Linq;
-using LibMetier.GestionPersonnages.Vehicules;
+using LibMetier.GestionPersonnages.Autoroute;
 
 namespace LibMetier.Simulateurs
 {
@@ -40,7 +40,7 @@ namespace LibMetier.Simulateurs
                     {
                         // Add each city to zone list
                         var zone = Fabrique.CreerZone(ville.Attribute("nom").Value);
-                        Environnement.ZoneAbstraitsList.Add(zone);
+                        Environnement.AjouteZoneAbstraits(zone);
                     }
                 }
 

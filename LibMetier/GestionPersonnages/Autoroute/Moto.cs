@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
-using LibMetier.Calculs;
+using LibMetier.Calculs.Autoroute;
 
-namespace LibMetier.GestionPersonnages.Vehicules
+namespace LibMetier.GestionPersonnages.Autoroute
 {
     public class Moto : Vehicule
     {

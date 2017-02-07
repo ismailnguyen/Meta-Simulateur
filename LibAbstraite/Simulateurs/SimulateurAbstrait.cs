@@ -31,5 +31,10 @@ namespace LibAbstraite.Simulateurs
 
             return stringBuilder.ToString();
         }
+
+        public string Statistiques()
+        {
+            return Environnement.Statistiques();
+        }
     }
 }

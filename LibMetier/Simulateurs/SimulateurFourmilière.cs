@@ -1,7 +1,6 @@
 ﻿using LibAbstraite.Simulateurs;
 using LibMetier.Fabriques;
-using LibMetier.GestionEnvironnement;
-using LibMetier.GestionPersonnages;
+using LibMetier.GestionEnvironnement.Fourmiliere;
 using LibMetier.GestionPersonnages.Fourmiliere;
 using System.Linq;
 using System.Xml.Linq;

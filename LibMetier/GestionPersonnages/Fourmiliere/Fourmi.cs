@@ -2,7 +2,7 @@
 using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionPersonnages;
 
-namespace LibMetier.GestionPersonnages
+namespace LibMetier.GestionPersonnages.Fourmiliere
 {
     public class Fourmi : PersonnageAbstrait
     {

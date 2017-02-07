@@ -1,10 +1,10 @@
-﻿namespace LibMetier.Calculs
+﻿namespace LibMetier.Calculs.Autoroute
 {
-    public class CalculsCarburantMoto: CalculCarburantAbstrait
+    public class CalculsCarburantVoiture : CalculCarburantAbstrait
     {
         public override int CarburantConsommé(int distanceParcourue, int quantitéInitial)
         {
-            var carburantConsommé = distanceParcourue / 3;
+            var carburantConsommé = distanceParcourue / 4;
 
             if (carburantConsommé > quantitéInitial) return 0;
 

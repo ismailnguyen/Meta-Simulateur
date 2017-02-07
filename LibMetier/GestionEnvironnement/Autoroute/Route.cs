@@ -2,7 +2,7 @@
 
 namespace LibMetier.GestionEnvironnement.Autoroute
 {
-    public class Autoroute : AccesAbstrait
+    public class Route : AccesAbstrait
     {
         // Kilometers
         public int Distance { get; set; }
@@ -10,7 +10,7 @@ namespace LibMetier.GestionEnvironnement.Autoroute
         // Capacity
         public int Capacité { get; set; }
 
-        public Autoroute(ZoneAbstraite debut, ZoneAbstraite fin) : base(debut, fin)
+        public Route(ZoneAbstraite debut, ZoneAbstraite fin) : base(debut, fin)
         {
             Distance = 100;
             Capacité = 100;

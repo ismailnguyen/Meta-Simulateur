@@ -1,18 +1,18 @@
 ﻿using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionObservations;
-using LibMetier.GestionPersonnages;
 using System.Text;
 using System.Collections.Generic;
+using LibMetier.GestionPersonnages.Autoroute;
 
 namespace LibMetier.GestionEnvironnement
 {
-    public class Autoroutes : EnvironnementAbstrait, IObservateur
+    public class EnvironnementAutoroute : EnvironnementAbstrait, IObservateur
     {
         protected List<Vehicule> VéhiculesEnPanne = new List<Vehicule>();
 
         public override string Simuler()
         {
-            StringBuilder sb = new StringBuilder();
+            var text = new StringBuilder();
 
             foreach (Vehicule vehicule in PersonnagesList)
             {
@@ -28,7 +28,7 @@ namespace LibMetier.GestionEnvironnement
 
                     DeplacerPersonnage(vehicule, zoneAbstraiteSource, zoneAbstraiteCible);
 
-                    sb.AppendFormat(
+                    text.AppendFormat(
                         "{0} : {1} à {2}\n",
                         vehicule.ToString(),
                         zoneAbstraiteSource.Nom,
@@ -37,13 +37,13 @@ namespace LibMetier.GestionEnvironnement
                 }
                 else
                 {
-                    sb.AppendFormat("{0} : dans cul de sac\n", vehicule.ToString());
+                    text.AppendFormat("{0} : dans cul de sac\n", vehicule.ToString());
                 }
             }
 
             récupérerVéhiculesEnPanne();
 
-            return sb.ToString();
+            return text.ToString();
         }
 
         public override string Statistiques()

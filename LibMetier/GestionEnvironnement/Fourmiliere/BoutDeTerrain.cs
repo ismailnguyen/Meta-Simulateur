@@ -2,7 +2,7 @@
 using LibMetier.GestionPersonnages.Fourmiliere;
 using System.Collections.Generic;
 
-namespace LibMetier.GestionEnvironnement
+namespace LibMetier.GestionEnvironnement.Fourmiliere
 {
     public class BoutDeTerrain : ZoneAbstraite
     {

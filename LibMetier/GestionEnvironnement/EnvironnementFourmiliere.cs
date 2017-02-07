@@ -2,9 +2,9 @@
 
 namespace LibMetier.GestionEnvironnement
 {
-    public class Fourmiliere : EnvironnementAbstrait
+    public class EnvironnementFourmiliere : EnvironnementAbstrait
     {
-        public Fourmiliere()
+        public EnvironnementFourmiliere()
         {
            
         }

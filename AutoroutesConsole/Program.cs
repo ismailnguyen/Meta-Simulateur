@@ -10,8 +10,6 @@ namespace AutoroutesConsole
         static void Main(string[] args)
         {
             SimulerAutoroutes();
-            
-            //SimulerMetro();
 
             Console.ReadLine();
         }
@@ -32,7 +30,7 @@ namespace AutoroutesConsole
                 Thread.Sleep(2000);
             }
 
-            Console.WriteLine(simulateur.Environnement.Statistiques());
+            Console.WriteLine(simulateur.Statistiques());
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace LibMetier.Calculs
+﻿namespace LibMetier.Calculs.Autoroute
 {
     public abstract class CalculCarburantAbstrait
     {

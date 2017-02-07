@@ -1,20 +1,19 @@
 ﻿using LibAbstraite.GestionPersonnages;
 using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
-using LibMetier.GestionEnvironnement.Fourmiliere;
 
-namespace LibMetier.GestionPersonnages.Fourmiliere
+namespace LibMetier.GestionPersonnages.Metro
 {
-    public class Objet : PersonnageAbstrait
+    public class Train : PersonnageAbstrait
     {
         public override ZoneAbstraite ChoixZoneSuivante(List<AccesAbstrait> accesList)
         {
-            return new BoutDeTerrain("un bout de terrain");
+            return accesList[Position.id].Fin;
         }
 
         public override string ToString()
         {
-            return "Objet ";
+            return "Train " + Nom;
         }
     }
 }

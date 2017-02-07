@@ -3,7 +3,7 @@ using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionPersonnages;
 using LibMetier.GestionEnvironnement;
 using LibMetier.GestionEnvironnement.Autoroute;
-using LibMetier.GestionPersonnages.Vehicules;
+using LibMetier.GestionPersonnages.Autoroute;
 
 namespace LibMetier.Fabriques
 {
@@ -11,7 +11,7 @@ namespace LibMetier.Fabriques
     {
         public override EnvironnementAbstrait CreerEnvironment()
         {
-            return new Autoroutes();
+            return new EnvironnementAutoroute();
         }
 
         public override ZoneAbstraite CreerZone(string nom)
@@ -21,7 +21,7 @@ namespace LibMetier.Fabriques
 
         public override AccesAbstrait CreerAcces(ZoneAbstraite zdebut, ZoneAbstraite zfin)
         {
-            return new Autoroute(zdebut, zfin);
+            return new Route(zdebut, zfin);
         }
 
         public override PersonnageAbstrait CreerPersonnage(string nom)

@@ -2,31 +2,31 @@
 using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionPersonnages;
 using LibMetier.GestionEnvironnement;
-using LibMetier.GestionEnvironnement.Fourmiliere;
-using LibMetier.GestionPersonnages.Fourmiliere;
+using LibMetier.GestionEnvironnement.Metro;
+using LibMetier.GestionPersonnages.Metro;
 
 namespace LibMetier.Fabriques
 {
-    public class FabriqueFourmiliere : FabriqueAbstraite
+    public class FabriqueMetro : FabriqueAbstraite
     {
         public override EnvironnementAbstrait CreerEnvironment()
         {
-            return new EnvironnementFourmiliere();
+            return new EnvironnementMetro();
         }
 
         public override ZoneAbstraite CreerZone(string nom)
         {
-            return new BoutDeTerrain(nom);
+            return new Station(nom);
         }
 
         public override AccesAbstrait CreerAcces(ZoneAbstraite zdebut, ZoneAbstraite zfin)
         {
-            return new Chemin(zdebut, zfin);
+            return new Rails(zdebut, zfin);
         }
 
         public override PersonnageAbstrait CreerPersonnage(string nom)
         {
-            return new Fourmi {Nom = nom};
+            return new Train { Nom = nom };
         }
     }
 }
