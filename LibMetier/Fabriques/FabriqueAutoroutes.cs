@@ -2,30 +2,31 @@
 using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionPersonnages;
 using LibMetier.GestionEnvironnement;
-using LibMetier.GestionPersonnages;
+using LibMetier.GestionEnvironnement.Autoroute;
+using LibMetier.GestionPersonnages.Vehicules;
 
 namespace LibMetier.Fabriques
 {
-    public class FabriqueFourmiliere : FabriqueAbstraite
+    public class FabriqueAutoroutes : FabriqueAbstraite
     {
         public override EnvironnementAbstrait CreerEnvironment()
         {
-            return new Fourmiliere();
+            return new Autoroutes();
         }
 
         public override ZoneAbstraite CreerZone(string nom)
         {
-            return new BoutDeTerrain(nom);
+            return new Ville(nom);
         }
 
         public override AccesAbstrait CreerAcces(ZoneAbstraite zdebut, ZoneAbstraite zfin)
         {
-            return new Chemin(zdebut, zfin);
+            return new Autoroute(zdebut, zfin);
         }
 
         public override PersonnageAbstrait CreerPersonnage(string nom)
         {
-            return new Fourmi {Nom = nom};
+            return new Voiture();
         }
     }
 }

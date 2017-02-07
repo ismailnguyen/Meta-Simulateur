@@ -1,17 +1,25 @@
-﻿using System;
+﻿using LibAbstraite.GestionEnvironnement;
+using LibMetier.GestionPersonnages.Fourmiliere;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibAbstraite.GestionEnvironnement;
-using LibMetier.GestionPersonnages;
 
 namespace LibMetier.GestionEnvironnement
 {
     public class BoutDeTerrain : ZoneAbstraite
     {
+        public List<Objet> ObjetsList { get; set; } = new List<Objet>();
+
         public BoutDeTerrain(string unNom) : base(unNom)
         {
+        }
+
+        public void AjouteObjet(Objet objet)
+        {
+            ObjetsList.Add(objet);
+        }
+
+        public void EnleveObjet(Objet objet)
+        {
+            ObjetsList.Remove(objet);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
-using LibAbstraite.Fabriques;
-using LibAbstraite.GestionEnvironnement;
-using LibMetier.Fabriques;
+using System.Threading;
+using LibAbstraite.Simulateurs;
+using LibMetier.Simulateurs;
 
 namespace FourmiliereConsole
 {
@@ -9,6 +9,7 @@ namespace FourmiliereConsole
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             /*      Console.WriteLine("----- Fourmilière -----");
 
                   FabriqueAbstraite uneFabrique = new FabriqueFourmiliere();
@@ -41,6 +42,30 @@ namespace FourmiliereConsole
             }
 
             Console.ReadLine();
+=======
+            SimulerFourmilière();
+
+            Console.ReadLine();
+        }
+
+        static void SimulerFourmilière()
+        {
+            Console.WriteLine("----- Fourmilière ----- \n\n");
+
+            SimulateurAbstrait simulateur = new SimulateurFourmilière("scenarioFourmiliere.xml");
+
+            simulateur.ChargerEnvironnement();
+
+            // Launch four simulation with 2 seconds waiting between each simulation
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine(simulateur.LancerSimulation());
+
+                Thread.Sleep(2000);
+            }
+
+            Console.WriteLine(simulateur.Environnement.Statistiques());
+>>>>>>> refs/remotes/origin/simulation/fourmiliere
         }
     }
 }

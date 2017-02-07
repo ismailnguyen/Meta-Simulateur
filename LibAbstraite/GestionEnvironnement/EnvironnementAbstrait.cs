@@ -32,8 +32,6 @@ namespace LibAbstraite.GestionEnvironnement
             RailsList = new List<AccesAbstrait>();
         }
 
-       
-
         //----------------------------------------------------------------------
         public void ChargerEnvironnement(FabriqueAbstraite fabrique)
         { 
@@ -156,6 +154,7 @@ namespace LibAbstraite.GestionEnvironnement
                 AccesAbstraitsList.Add(accesInverse);
             }
         }
+<<<<<<< HEAD
         //------------------------------------------------------------------------------------------
         private void AjouteRail(FabriqueAbstraite fabrique, AccesAbstrait rail)
         {
@@ -165,6 +164,11 @@ namespace LibAbstraite.GestionEnvironnement
         }
         //-------------------------------------------------------------------------------------------
         public string Simuler()
+=======
+
+        
+        public virtual string Simuler()
+>>>>>>> refs/remotes/origin/simulation/fourmiliere
         {
             StringBuilder sb = new StringBuilder();
             foreach (PersonnageAbstrait unPersonnage in PersonnagesList)
@@ -201,6 +205,7 @@ namespace LibAbstraite.GestionEnvironnement
                     //Changer de méthode (pas de hasard)
                     ZoneAbstraite cible = unTrain.ChoixZoneSuivante(RailsList);
 
+<<<<<<< HEAD
                     DeplacerPersonnage(unTrain, source, cible);
                     sb.AppendFormat("{0} : {1} --> {2}\n", unTrain.Nom, source.Nom,
                         cible.Nom);
@@ -215,6 +220,9 @@ namespace LibAbstraite.GestionEnvironnement
         }
         //-----------------------------------------------------------------------------------------------------------------------------------------------
         private void DeplacerPersonnage(PersonnageAbstrait unPersonnage, ZoneAbstraite zoneAbstraiteCible,
+=======
+        protected virtual void DeplacerPersonnage(PersonnageAbstrait unPersonnage, ZoneAbstraite zoneAbstraiteCible,
+>>>>>>> refs/remotes/origin/simulation/fourmiliere
             ZoneAbstraite zoneAbstraiteSource)
         {
             unPersonnage.Position = zoneAbstraiteCible;
@@ -222,8 +230,12 @@ namespace LibAbstraite.GestionEnvironnement
             zoneAbstraiteCible.AjoutePersonnage(unPersonnage);
         }
 
+<<<<<<< HEAD
         //--------------------------------------------------------------------------------------------------------------------------------------------------
         public string Statistiques()
+=======
+        public virtual string Statistiques()
+>>>>>>> refs/remotes/origin/simulation/fourmiliere
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(ZoneAbstraitsList.Count + " Zones");

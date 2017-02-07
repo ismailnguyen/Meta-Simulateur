@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.GestionPersonnages;
-using LibMetier.GestionEnvironnement;
 
 namespace LibMetier.GestionPersonnages
 {
