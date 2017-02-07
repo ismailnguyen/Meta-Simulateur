@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using LibAbstraite.Simulateurs;
 using LibMetier.Simulateurs;
 

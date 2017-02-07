@@ -1,0 +1,117 @@
+﻿<Window x:Class="MetaSimulateur.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetaSimulateur"
+        mc:Ignorable="d"
+        Title="Meta-Simulateur" Height="350" Width="500">
+    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock 
+            Grid.Column="0" 
+            Grid.Row="0" 
+            Grid.ColumnSpan="2" 
+            x:Name="textTitle" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Height="25" 
+            TextWrapping="Wrap"
+            Text="Choisissez votre mode et simulation" 
+            Width="200" />
+
+        <TextBlock 
+            Grid.Column="0" 
+            Grid.Row="1" 
+            x:Name="textConsole" 
+            Height="25" 
+            TextWrapping="Wrap"
+            Text="Console" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="80" />
+        
+        <Button 
+            Grid.Column="0" 
+            Grid.Row="2"
+            x:Name="buttonConsoleFourmiliere" 
+            Content="Fourmilière" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="160"
+            Click="buttonConsoleFourmiliere_Click"/>
+        <Button 
+            Grid.Column="0" 
+            Grid.Row="3"
+            x:Name="buttonConsoleAutoroutes"
+            Content="Autoroutes" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="160"
+            Click="buttonConsoleAutoroutes_Click"/>
+        <Button 
+            Grid.Column="0" 
+            Grid.Row="4"
+            x:Name="buttonConsoleMetro" 
+            Content="Métro" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="160"
+            Click="buttonConsoleMetro_Click"/>
+
+        <TextBlock 
+            Grid.Column="1" 
+            Grid.Row="1" 
+            x:Name="textUi" 
+            Height="25" 
+            TextWrapping="Wrap"
+            Text="UI" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="80" />
+
+        <Button 
+            Grid.Column="1" 
+            Grid.Row="2"
+            x:Name="buttonUiFourmiliere" 
+            Content="Fourmilière" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="160"
+            Click="buttonConsoleFourmiliere_Click"/>
+        <Button 
+            Grid.Column="1" 
+            Grid.Row="3"
+            x:Name="buttonUiAutoroutes"
+            Content="Autoroutes" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="160"
+            Click="buttonConsoleAutoroutes_Click"/>
+        <Button 
+            Grid.Column="1" 
+            Grid.Row="4"
+            x:Name="buttonUiMetro" 
+            Content="Métro" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="160"
+            Click="buttonConsoleMetro_Click"/>
+        
+    </Grid>
+    
+</Window>
