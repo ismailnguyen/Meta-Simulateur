@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LibAbstraite.GestionEnvironnement;
+using LibAbstraite.Simulateurs;
+using LibMetier.Simulateurs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +23,40 @@ namespace AutoroutesUi
     /// </summary>
     public partial class MainWindow : Window
     {
+        SimulateurAbstrait simulateur { get; set; }
+        IDictionary<string, FrameworkElement> villes = new Dictionary<string, FrameworkElement>();
+
         public MainWindow()
         {
             InitializeComponent();
 
             initialiserVilles();
+
+            initialiserSimulateur();
+        }
+
+        private void initialiserSimulateur()
+        {
+            simulateur = new SimulateurAutoroutes("scenarioAutoroutes.xml");
+
+            simulateur.ChargerEnvironnement();
+        }
+
+        private void lancerSimulation()
+        {
+            simulateur.LancerSimulation();
+            var statistiquesSimulation = simulateur.Statistiques();
+
+            actualiserCarte(statistiquesSimulation.ZoneAbstraitsList);
+        }
+
+        private void actualiserCarte(List<ZoneAbstraite> zones)
+        {
+            foreach (var ville in zones)
+            {
+                var champ = (TextBlock)villes[ville.Nom];
+                champ.Text = ville.PersonnagesList.Count.ToString();
+            }
         }
 
         private void initialiserVilles()
@@ -35,65 +67,72 @@ namespace AutoroutesUi
             initialiserToulouse();
             initialiserNice();
             initialiserMontpellier();
-            initialiserStrasboug();
+            initialiserStrasbourg();
             initialiserMarseille();
             initialiserLille();
         }
 
         private void initialiserMarseille()
         {
-            ajouterTexte(0, 13, 16);
+            ajouterTexte("Marseille", 0, 13, 16);
         }
 
-        private void initialiserStrasboug()
+        private void initialiserStrasbourg()
         {
-            ajouterTexte(0, 16, 6);
+            ajouterTexte("Strasbourg", 0, 16, 6);
         }
 
         private void initialiserMontpellier()
         {
-            ajouterTexte(0, 11, 15);
+            ajouterTexte("Montpellier", 0, 11, 15);
         }
 
         private void initialiserNice()
         {
-            ajouterTexte(0, 16, 15);
+            ajouterTexte("Nice", 0, 16, 15);
         }
 
         private void initialiserToulouse()
         {
-            ajouterTexte(0, 8, 15);
+            ajouterTexte("Toulouse", 0, 8, 15);
         }
 
         private void initialiserBordeaux()
         {
-            ajouterTexte(0, 5, 13);
+            ajouterTexte("Bordeaux", 0, 5, 13);
         }
 
         private void initialiserLyon()
         {
-            ajouterTexte(0, 12, 11);
+            ajouterTexte("Lyon", 0, 12, 11);
         }
 
         private void initialiserParis()
         {
-            ajouterTexte(0, 9, 5);
+            ajouterTexte("Paris", 0, 9, 5);
         }
 
         private void initialiserLille()
         {
-            ajouterTexte(0, 9, 2);
+            ajouterTexte("Lille", 0, 9, 2);
         }
 
-        private void ajouterTexte(int valeur, int x, int y)
+        private void ajouterTexte(string nomn, int valeur, int x, int y)
         {
-            var texte = new TextBlock();
-            Grid.SetColumn(texte, x);
-            Grid.SetRow(texte, y);
-            texte.Background = Brushes.White;
-            texte.Text = valeur.ToString();
+            var champ = new TextBlock();
+            Grid.SetColumn(champ, x);
+            Grid.SetRow(champ, y);
+            champ.Background = Brushes.White;
+            champ.Text = valeur.ToString();
 
-            grid.Children.Add(texte);
+            grid.Children.Add(champ);
+
+            villes.Add(nomn, champ);
+        }
+
+        private void buttonDémarrer_Click(object sender, RoutedEventArgs e)
+        {
+            lancerSimulation();
         }
     }
 }

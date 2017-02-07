@@ -92,6 +92,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="160"
+            Visibility="Hidden"
             Click="buttonConsoleFourmiliere_Click"/>
         <Button 
             Grid.Column="1" 
@@ -101,7 +102,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="160"
-            Click="buttonConsoleAutoroutes_Click"/>
+            Click="buttonUiAutoroutes_Click"/>
         <Button 
             Grid.Column="1" 
             Grid.Row="4"
@@ -110,6 +111,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="160"
+            Visibility="Hidden"
             Click="buttonConsoleMetro_Click"/>
         
     </Grid>

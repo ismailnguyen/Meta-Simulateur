@@ -9,9 +9,9 @@
     <Grid x:Name="grid" Margin="34,0,-34,0">
 
         <Grid.Background>
-            <ImageBrush ImageSource="D:\Projects\Simulation-DesignPatterns\AutoroutesUi\bin\Debug/autoroutes/france_map.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="D:\Projects\Simulation-DesignPatterns\Ressources\france_map.png" Stretch="UniformToFill"/>
         </Grid.Background>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
@@ -57,8 +57,9 @@
             <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
+        <Button x:Name="buttonDémarrer" Grid.ColumnSpan="5" Content="Button" HorizontalAlignment="Left" Height="55" Margin="0,10,0,0" Grid.Row="16" Grid.RowSpan="3" VerticalAlignment="Top" Width="115" Click="buttonDémarrer_Click"/>
 
-        
-        
+
+
     </Grid>
 </Window>

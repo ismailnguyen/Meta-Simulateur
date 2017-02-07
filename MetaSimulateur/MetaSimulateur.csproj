@@ -100,6 +100,10 @@
       <Project>{db5097c1-d809-4701-ab00-3b3af3227c35}</Project>
       <Name>AutoroutesConsole</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AutoroutesUi\AutoroutesUi.csproj">
+      <Project>{043012b8-5d89-4af3-9763-b4e833b559c8}</Project>
+      <Name>AutoroutesUi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FourmiliereConsole\FourmiliereConsole.csproj">
       <Project>{93acacd5-384b-4048-8c3a-f1aa5d78c8e1}</Project>
       <Name>FourmiliereConsole</Name>

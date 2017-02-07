@@ -36,6 +36,11 @@ namespace MetaSimulateur
             Process.Start("AutoroutesConsole.exe");
         }
 
+        private void buttonUiAutoroutes_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("AutoroutesUi.exe");
+        }
+
         private void buttonConsoleMetro_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("MetroConsole.exe");

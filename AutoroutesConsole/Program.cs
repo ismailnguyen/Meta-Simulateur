@@ -30,7 +30,7 @@ namespace AutoroutesConsole
                 Thread.Sleep(2000);
             }
 
-            Console.WriteLine(simulateur.Statistiques());
+            Console.WriteLine(simulateur.Environnement.Statistiques());
         }
     }
 }

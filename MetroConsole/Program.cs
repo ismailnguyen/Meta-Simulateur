@@ -23,7 +23,7 @@ namespace MetroConsole
 
             Console.WriteLine(simulateur.LancerSimulation());
 
-            Console.WriteLine(simulateur.Statistiques());
+            Console.WriteLine(simulateur.Environnement.Statistiques());
         }
     }
 }
