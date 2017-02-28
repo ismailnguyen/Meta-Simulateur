@@ -31,7 +31,7 @@ namespace LibMetier.Simulateurs
         public override void ChargerEnvironnement()
         {
             // Load xml file (with Xml-to-Linq loader)
-            var scenario = XDocument.Load(fichierEntrée);
+             var scenario = XDocument.Load(fichierEntrée);
 
             foreach (XElement node in scenario.Descendants("lignes").Nodes())
             {

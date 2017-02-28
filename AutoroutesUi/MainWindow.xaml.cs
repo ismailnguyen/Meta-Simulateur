@@ -1,20 +1,11 @@
 ﻿using LibAbstraite.GestionEnvironnement;
 using LibAbstraite.Simulateurs;
 using LibMetier.Simulateurs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AutoroutesUi
 {
@@ -40,14 +31,21 @@ namespace AutoroutesUi
             simulateur = new SimulateurAutoroutes("scenarioAutoroutes.xml");
 
             simulateur.ChargerEnvironnement();
+
+            actualiserCarte(simulateur.Environnement.ZoneAbstraitsList);
         }
 
         private void lancerSimulation()
         {
-            simulateur.LancerSimulation();
-            var statistiquesSimulation = simulateur.Statistiques();
+            /*for (int i=0; i<5; i++)
+            {*/
+                simulateur.LancerSimulation();
+                var statistiquesSimulation = simulateur.Statistiques();
 
-            actualiserCarte(statistiquesSimulation.ZoneAbstraitsList);
+                actualiserCarte(statistiquesSimulation.ZoneAbstraitsList);
+
+                /*Thread.Sleep(2000);
+            }*/
         }
 
         private void actualiserCarte(List<ZoneAbstraite> zones)

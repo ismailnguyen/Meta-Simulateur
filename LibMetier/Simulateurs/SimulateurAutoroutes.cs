@@ -92,7 +92,7 @@ namespace LibMetier.Simulateurs
 
         public override string LancerSimulation()
         {
-            return base.LancerSimulation(11);
+            return Environnement.Simuler();
         }
     }
 }

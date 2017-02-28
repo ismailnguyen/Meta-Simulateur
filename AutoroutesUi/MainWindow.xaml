@@ -57,7 +57,7 @@
             <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonDémarrer" Grid.ColumnSpan="5" Content="Button" HorizontalAlignment="Left" Height="55" Margin="0,10,0,0" Grid.Row="16" Grid.RowSpan="3" VerticalAlignment="Top" Width="115" Click="buttonDémarrer_Click"/>
+        <Button x:Name="buttonDémarrer" Grid.ColumnSpan="5" Content="Démarrer" HorizontalAlignment="Left" Height="55" Margin="0,10,0,0" Grid.Row="16" Grid.RowSpan="3" VerticalAlignment="Top" Width="115" Click="buttonDémarrer_Click"/>
 
 
 
